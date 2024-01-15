@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Discovery" />
+        <module name="Products" />
+        <module name="Gateway" />
+        <module name="Config" />
+        <module name="Auth" />
+        <module name="Cart" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.example.Products" target="17" />
+      <module name="com.example.Products.main" target="17" />
+      <module name="com.example.Products.test" target="17" />
+      <module name="Cours" target="1.5" />
+      <module name="Etudiant" target="1.5" />
+      <module name="Inscription" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Auth" options="-parameters" />
+      <module name="Cart" options="" />
+      <module name="Config" options="-parameters" />
+      <module name="Cours" options="" />
+      <module name="Discovery" options="" />
+      <module name="Etudiant" options="" />
+      <module name="Gateway" options="" />
+      <module name="Inscription" options="" />
+      <module name="Products" options="-parameters" />
+    </option>
+  </component>
+</project>

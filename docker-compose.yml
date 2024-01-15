@@ -1,0 +1,43 @@
+version: "3"
+services:
+  front:
+    build: ./productManager
+    ports:
+      - "8080:80"
+    depends_on:
+      - product
+  product:
+    build: ./Products
+    ports:
+      - "8084:8084"
+    depends_on:
+      - config
+      - postgres_product
+  auth:
+   build: ./Auth
+   ports:
+     - "8090:8090"
+   depends_on:
+     - config
+     - postgres_auth
+  config:
+    build: ./Config
+    container_name: config
+    ports:
+      - "8888:8888"
+  postgres_product:
+    image: postgres
+    container_name: postgres.product
+    environment:
+      POSTGRES_PASSWORD: anas
+      POSTGRES_DB: product
+    ports:
+      - "5432:5432"
+  postgres_auth:
+   image: postgres
+   container_name: postgres.auth
+   environment:
+     POSTGRES_PASSWORD: anas
+     POSTGRES_DB: auth
+   ports:
+     - "5434:5432"
