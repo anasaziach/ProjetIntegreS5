@@ -6,5 +6,5 @@
 
     public interface AuthService {
         Users signup(UserDTO userDTO);
-        boolean login(String email , String password);
+        Users login(String email , String password);
     }

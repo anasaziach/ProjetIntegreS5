@@ -17,7 +17,7 @@ public class Controller {
     @Autowired
     Service service;
     @PostMapping("api/auth/login")
-    public boolean login(@RequestBody UserLoginDTO user){
+    public Users login(@RequestBody UserLoginDTO user){
         return service.login(user.getEmail(),user.getPassword());
     }
     @PostMapping("api/auth/signup")

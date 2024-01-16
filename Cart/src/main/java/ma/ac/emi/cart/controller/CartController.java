@@ -1,31 +1,28 @@
 package ma.ac.emi.cart.controller;
 
 import ma.ac.emi.cart.Service.CartService;
+import ma.ac.emi.cart.cartResponse.CartResponse;
 import ma.ac.emi.cart.dto.CartDTO;
 import ma.ac.emi.cart.entity.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/cart")
 public class CartController {
 
     @Autowired
     private CartService cartService;
 
-    @PostMapping
-    public Cart createCart(@RequestBody CartDTO cart) {
-        return cartService.createCart(cart);
-    }
+//    @PostMapping
+//    public Cart createCart(@RequestBody CartDTO cart) {
+//        return cartService.createCart(cart);
+//    }
 
     @GetMapping("/user/{userId}")
-    public List<Cart> getAllCartsByUserId(@PathVariable("userId") Long id) {
+    public Cart getAllCartsByUserId(@PathVariable("userId") Long id) {
         return cartService.getAllCartsByUserId(id);
     }
 
@@ -35,9 +32,9 @@ public class CartController {
         cartService.deleteCart(id);
     }
 
-    @PostMapping("/{cartId}/add/{productId}")
-    public Cart addProductId(@PathVariable Long cartId, @PathVariable Long productId) {
-        return cartService.addProductId(cartId,productId);
+    @PostMapping("/add")
+    public Cart addProductId(@RequestBody CartResponse cartResponse) {
+        return cartService.addProductId(cartResponse.getUserId(), cartResponse.getProductId());
     }
 
     @PostMapping("/{cartId}/remove/{productId}")

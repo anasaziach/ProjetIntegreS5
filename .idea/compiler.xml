@@ -27,12 +27,12 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Auth" options="-parameters" />
-      <module name="Cart" options="" />
+      <module name="Cart" options="-parameters" />
       <module name="Config" options="-parameters" />
       <module name="Cours" options="" />
-      <module name="Discovery" options="" />
+      <module name="Discovery" options="-parameters" />
       <module name="Etudiant" options="" />
-      <module name="Gateway" options="" />
+      <module name="Gateway" options="-parameters" />
       <module name="Inscription" options="" />
       <module name="Products" options="-parameters" />
     </option>

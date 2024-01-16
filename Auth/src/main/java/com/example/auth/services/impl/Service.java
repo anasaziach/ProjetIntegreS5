@@ -31,16 +31,16 @@ public class Service implements AuthService {
     }
 
     @Override
-    public boolean login(String email , String password) {
+    public Users login(String email , String password) {
         try{
             if(userRepository.findByEmailAndPassword(email, password).isPresent()) {
-                return true;
+                return userRepository.findByEmailAndPassword(email,password).get();
             }
             else{
                 throw new RuntimeException("user not found");
             }
         }catch(Exception e){
         }
-        return false;
+        return null;
     }
 }
