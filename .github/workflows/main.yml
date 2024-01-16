@@ -68,6 +68,29 @@ jobs:
       # - name: Show Frontend Url
       #   run: echo frontend :${{ steps.deploy_frontend.outputs.url }} >> $GITHUB_STEP_SUMMARY
 
+      - name: Deploy postgres_auth to Cloud Run
+        id: deploy_postgres_auth
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}-${{env.POSTEGRES_AUTH_IMAGE_NAME}}
+          region: ${{ env.REGION }}
+          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.POSTEGRES_AUTH_IMAGE_NAME}}:latest
+          # metadata: service.yaml
+      - name: Show Backend Url
+        run: echo backend :${{ steps.deploy_postgres_auth.outputs.url }}>> $GITHUB_STEP_SUMMARY
+
+      - name: Deploy postgres_product to Cloud Run
+        id: deploy_postgres_product
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}-${{env.POSTEGRES_PRODUCT_IMAGE_NAME}}
+          region: ${{ env.REGION }}
+          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.POSTEGRES_PRODUCT_IMAGE_NAME}}:latest
+          # metadata: service.yaml
+      - name: Show Backend Url
+        run: echo backend :${{ steps.deploy_postgres_product.outputs.url }}>> $GITHUB_STEP_SUMMARY
+
+
 
 
       - name: Deploy product to Cloud Run
@@ -103,26 +126,4 @@ jobs:
           # metadata: service.yaml
       - name: Show Backend Url
         run: echo backend :${{ steps.deploy_config.outputs.url }}>> $GITHUB_STEP_SUMMARY
-
-      - name: Deploy postgres_product to Cloud Run
-        id: deploy_postgres_product
-        uses: google-github-actions/deploy-cloudrun@v2
-        with:
-          service: ${{ env.SERVICE }}-${{env.POSTEGRES_PRODUCT_IMAGE_NAME}}
-          region: ${{ env.REGION }}
-          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.POSTEGRES_PRODUCT_IMAGE_NAME}}:latest
-          # metadata: service.yaml
-      - name: Show Backend Url
-        run: echo backend :${{ steps.deploy_postgres_product.outputs.url }}>> $GITHUB_STEP_SUMMARY
-
-      - name: Deploy postgres_auth to Cloud Run
-        id: deploy_postgres_auth
-        uses: google-github-actions/deploy-cloudrun@v2
-        with:
-          service: ${{ env.SERVICE }}-${{env.POSTEGRES_AUTH_IMAGE_NAME}}
-          region: ${{ env.REGION }}
-          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.POSTEGRES_AUTH_IMAGE_NAME}}:latest
-          # metadata: service.yaml
-      - name: Show Backend Url
-        run: echo backend :${{ steps.deploy_postgres_auth.outputs.url }}>> $GITHUB_STEP_SUMMARY
 
