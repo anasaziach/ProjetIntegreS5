@@ -12,7 +12,7 @@ services:
     build: ./Products
     container_name: product
     ports:
-      - "8084:8084"
+      - "8080:8084"
     depends_on:
       - config
       - postgres_product
@@ -21,7 +21,7 @@ services:
     build: ./Auth
     container_name: auth
     ports:
-      - "8090:8090"
+      - "8080:8090"
     depends_on:
       - config
       - postgres_auth
@@ -30,7 +30,7 @@ services:
     build: ./Config
     container_name: config
     ports:
-      - "8888:8888"
+      - "8080:8888"
   postgres_product:
     image: postgres
     container_name: postgres.product
@@ -38,7 +38,7 @@ services:
       POSTGRES_PASSWORD: anas
       POSTGRES_DB: product
     ports:
-      - "5432:5432"
+      - "8080:5432"
   postgres_auth:
     image: postgres
     container_name: postgres.auth
@@ -46,4 +46,4 @@ services:
       POSTGRES_PASSWORD: anas
       POSTGRES_DB: auth
     ports:
-      - "5434:5432"
+      - "8080:5432"
