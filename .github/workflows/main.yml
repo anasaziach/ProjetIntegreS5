@@ -17,8 +17,8 @@ env:
   PRODUCT_IMAGE_NAME : product
   AUTH_IMAGE_NAME : auth
   CONFIG_IMAGE_NAME : config
-  POSTEGRES_PRODUCT_IMAGE_NAME : postgres_product
-  POSTEGRES_AUTH_IMAGE_NAME : postgres_product
+  POSTEGRES_PRODUCT_IMAGE_NAME : postgres-product
+  POSTEGRES_AUTH_IMAGE_NAME : postgres-product
   
 
 jobs:
