@@ -1,12 +1,12 @@
 version: "3"
 services:
-  front:
-    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/front:latest"
-    build: ./productManager
-    ports:
-      - "8080:80"
-    depends_on:
-      - product
+  # front:
+  #   image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/front:latest"
+  #   build: ./productManager
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - product
   product:
     image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/product:latest"
     build: ./Products

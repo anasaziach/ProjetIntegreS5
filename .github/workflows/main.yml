@@ -57,16 +57,16 @@ jobs:
         run: docker-compose push 
 
 
-      - name: Deploy frontend to Cloud Run
-        id: deploy_frontend
-        uses: google-github-actions/deploy-cloudrun@v0
-        with:
-          service: ${{ env.SERVICE }}-${{env.FRONTEND_IMAGE_NAME}}
-          region: ${{ env.REGION }}
-          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.FRONTEND_IMAGE_NAME}}:latest
+      # - name: Deploy frontend to Cloud Run
+      #   id: deploy_frontend
+      #   uses: google-github-actions/deploy-cloudrun@v0
+      #   with:
+      #     service: ${{ env.SERVICE }}-${{env.FRONTEND_IMAGE_NAME}}
+      #     region: ${{ env.REGION }}
+      #     image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{env.FRONTEND_IMAGE_NAME}}:latest
       
-      - name: Show Frontend Url
-        run: echo frontend :${{ steps.deploy_frontend.outputs.url }} >> $GITHUB_STEP_SUMMARY
+      # - name: Show Frontend Url
+      #   run: echo frontend :${{ steps.deploy_frontend.outputs.url }} >> $GITHUB_STEP_SUMMARY
 
 
 
