@@ -32,18 +32,14 @@ services:
     ports:
       - "8080:8888"
   postgres_product:
-    image: postgres
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/postgress-product:latest"
+    build: ./postgress-product
     container_name: postgres.product
-    environment:
-      POSTGRES_PASSWORD: anas
-      POSTGRES_DB: product
     ports:
       - "8080:5432"
   postgres_auth:
-    image: postgres
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/postgress-auth:latest"
+    build: ./postgress-auth
     container_name: postgres.auth
-    environment:
-      POSTGRES_PASSWORD: anas
-      POSTGRES_DB: auth
     ports:
       - "8080:5432"
