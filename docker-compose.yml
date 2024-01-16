@@ -1,13 +1,14 @@
 version: "3"
 services:
   front:
-
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/front:latest"
     build: ./productManager
     ports:
       - "8080:80"
     depends_on:
       - product
   product:
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/product:latest"
     build: ./Products
     container_name: product
     ports:
@@ -16,14 +17,16 @@ services:
       - config
       - postgres_product
   auth:
-   build: ./Auth
-   container_name: auth
-   ports:
-     - "8090:8090"
-   depends_on:
-     - config
-     - postgres_auth
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/auth:latest"
+    build: ./Auth
+    container_name: auth
+    ports:
+      - "8090:8090"
+    depends_on:
+      - config
+      - postgres_auth
   config:
+    image: "us-central1-docker.pkg.dev/inspiring-tower-411321/myservice/config:latest"
     build: ./Config
     container_name: config
     ports:
@@ -37,10 +40,10 @@ services:
     ports:
       - "5432:5432"
   postgres_auth:
-   image: postgres
-   container_name: postgres.auth
-   environment:
-     POSTGRES_PASSWORD: anas
-     POSTGRES_DB: auth
-   ports:
-     - "5434:5432"
+    image: postgres
+    container_name: postgres.auth
+    environment:
+      POSTGRES_PASSWORD: anas
+      POSTGRES_DB: auth
+    ports:
+      - "5434:5432"
