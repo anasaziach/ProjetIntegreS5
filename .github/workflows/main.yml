@@ -59,7 +59,7 @@ jobs:
 
       # - name: Deploy frontend to Cloud Run
       #   id: deploy_frontend
-      #   uses: google-github-actions/deploy-cloudrun@v0
+      #   uses: google-github-actions/deploy-cloudrun@v2
       #   with:
       #     service: ${{ env.SERVICE }}-${{env.FRONTEND_IMAGE_NAME}}
       #     region: ${{ env.REGION }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: Deploy product to Cloud Run
         id: deploy_product
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.SERVICE }}-${{env.PRODUCT_IMAGE_NAME}}
           region: ${{ env.REGION }}
@@ -84,7 +84,7 @@ jobs:
 
       - name: Deploy auth to Cloud Run
         id: deploy_auth
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.SERVICE }}-${{env.AUTH_IMAGE_NAME}}
           region: ${{ env.REGION }}
@@ -95,7 +95,7 @@ jobs:
 
       - name: Deploy config to Cloud Run
         id: deploy_config
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.SERVICE }}-${{env.CONFIG_IMAGE_NAME}}
           region: ${{ env.REGION }}
@@ -106,7 +106,7 @@ jobs:
 
       - name: Deploy postgres_product to Cloud Run
         id: deploy_postgres_product
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.SERVICE }}-${{env.POSTEGRES_PRODUCT_IMAGE_NAME}}
           region: ${{ env.REGION }}
@@ -117,7 +117,7 @@ jobs:
 
       - name: Deploy postgres_auth to Cloud Run
         id: deploy_postgres_auth
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.SERVICE }}-${{env.POSTEGRES_AUTH_IMAGE_NAME}}
           region: ${{ env.REGION }}
